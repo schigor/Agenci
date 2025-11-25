@@ -4,10 +4,14 @@ using TMPro;
 
 public class AgentSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject agentPrefab; // Prefab twojego Enemy/Agenta
-    [SerializeField] private Transform spawnArea; // Parent object dla spawnu
-    [SerializeField] private Vector3 spawnAreaSize = new Vector3(50f, 1f, 50f); // Rozmiar obszaru spawnu
+    [SerializeField] private GameObject agentPrefab;
+    [SerializeField] private Transform spawnArea;
+    [SerializeField] private Vector3 spawnAreaSize = new Vector3(50f, 1f, 50f);
     [SerializeField] private int defaultAgentCount = 5;
+    
+    // Ustawienia Tilemap
+    [SerializeField] private float tileSize = 1f; 
+    [SerializeField] private float agentsPerSquareMeter = 2f; 
     
     // UI elementy
     [SerializeField] private TMP_InputField agentCountInput;
@@ -25,22 +29,19 @@ public class AgentSpawner : MonoBehaviour
             agentCountInput.text = defaultAgentCount.ToString();
     }
 
+    
     public void SpawnAgents()
     {
-        // Usuń poprzednio spawnutych agentów
         DestroyPreviousAgents();
         
-        // Odczytaj ilość agentów z InputField
         if (!int.TryParse(agentCountInput.text, out int agentCount))
         {
-            Debug.LogError("Nieprawidłowa liczba agentów!");
-            UpdateStatus("Błąd: Wpisz liczbę", Color.red);
+            UpdateStatus("Błąd: Wpisz liczbę agentów!", Color.red);
             return;
         }
 
         if (agentCount <= 0)
         {
-            Debug.LogError("Liczba agentów musi być większa niż 0!");
             UpdateStatus("Błąd: Liczba musi być > 0", Color.red);
             return;
         }
@@ -51,7 +52,6 @@ public class AgentSpawner : MonoBehaviour
         {
             Vector3 randomPos = GetRandomSpawnPosition();
             
-            // Sprawdź czy pozycja jest na NavMeshu
             if (IsPositionOnNavMesh(randomPos))
             {
                 GameObject newAgent = Instantiate(agentPrefab, randomPos, Quaternion.identity, spawnArea);
@@ -60,14 +60,13 @@ public class AgentSpawner : MonoBehaviour
             }
             else
             {
-                i--; // Spróbuj ponownie jeśli pozycja nie jest na NavMeshu
+                i--;
             }
         }
 
         Debug.Log($"Spawned {spawnedAgents} agents");
         UpdateStatus($"Spawned {spawnedAgents} agents", Color.green);
     }
-
     private Vector3 GetRandomSpawnPosition()
     {
         float randomX = Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f);
