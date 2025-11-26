@@ -12266,7 +12266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c459471cf4c9c4c86f2dd65e114306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentSpawner
-  agentPrefab: {fileID: 7059939148497166118, guid: 314c109e955bd0a47b164265494ddeb4, type: 3}
+  agentPrefab: {fileID: 5442236016119798274, guid: 139e7af3d7a98714aab517f05f5017b3, type: 3}
   spawnArea: {fileID: 1835979037}
   spawnAreaSize: {x: 29, y: 1, z: 9}
   defaultAgentCount: 20
@@ -24999,7 +24999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: NavMeshComponents::UnityEngine.AI.NavMeshModifier
   m_SerializedVersion: 0
   m_OverrideArea: 1
-  m_Area: 1
+  m_Area: 2
   m_OverrideGenerateLinks: 0
   m_GenerateLinks: 0
   m_IgnoreFromBuild: 0
