@@ -65,7 +65,7 @@ PrefabInstance:
       addedObject: {fileID: 4774040295530392374}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 169d0db88d3680a41bbd6cc21353256a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3184868224585196652}
+      addedObject: {fileID: 7143512041462440982}
   m_SourcePrefab: {fileID: 100100000, guid: 169d0db88d3680a41bbd6cc21353256a, type: 3}
 --- !u!1 &7059939148497166118 stripped
 GameObject:
@@ -94,7 +94,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3184868224585196652
+--- !u!114 &7143512041462440982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,12 +103,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7059939148497166118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbaab18a0b6ae104a99b6bd47c6c3452, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c65bb1b4440c6744a264c70477019d3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  Target: {fileID: 0}
-  UpdateSpeed: 0.1
-  exitTag: Exit
-  orderedPath:
-  - {fileID: 0}
-  checkpointTag: Checkpoint
+  m_EditorClassIdentifier: Assembly-CSharp::AgentController
+  agentType: 0
+  traits:
+    MoveSpeed: 0
+    VisionRange: 0
+    HearingRange: 0
+    ReactionTime: 0
